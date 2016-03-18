@@ -23,8 +23,6 @@ from future.builtins import *  # NOQA
 import doctest
 import sys
 
-import numpy as np
-
 from obspy import UTCDateTime
 from obspy.core.util.deprecation_helpers import \
     DynamicAttributeImportRerouteModule
