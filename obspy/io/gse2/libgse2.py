@@ -348,14 +348,14 @@ def read_integer_data(fh, npts):
 
     while len(data) < npts:
         buf = fh.readline()
-        if buf.strip() in ["DAT1", "DAT2"]:
+        if not buf:
+            # break loop if no data is given
+            break
+        if buf.decode().strip() in ("DAT1", "DAT2"):
             in_data_section = True
             continue
         if not in_data_section:
             continue
-        if not buf:
-            # break loop if no data is given
-            break
         data.extend(buf.strip().split(b" "))
 
     return np.array(data, dtype=np.int32)
